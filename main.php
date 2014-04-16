@@ -12,18 +12,19 @@ $defaultBucketPath = "gs://" . $defaultBucket;
 $lmBucket = "localmapdata";
 $lmBucketPath = "gs://" . $lmBucket;
 
-echo '!!!!!!!!Hello world!!!!!!! localmap <br>';
+echo 'Hello world!!!!!!! localmap <br>';
 //file_put_contents('gs://'. $defaultBucket. '/hello.txt', 'Hello');
 //echo 'file put <br>';
 
 
-$object_url = $lmBucketPathh . '/test.txt';
+//$object_url = $lmBucketPathh . '/test.txt';
+$object_url = 'gs://home/localmapdata/test.txt';
 $options = stream_context_create(['gs' => ['acl' => 'public-read']]);
 echo 'stream context create <br>';
 
 $my_file = fopen($object_url, 'w', false, $options);
 echo 'fopen done <br>';
-fwrite($my_file, 'my file text document Number \n');
+fwrite($my_file, 'my file text document Number');
 echo 'fwrite done <br>';
 
 fclose($my_file);
