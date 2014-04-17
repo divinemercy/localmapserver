@@ -24,7 +24,7 @@ echo 'stream context create <br>';
 
 $my_file = fopen($object_url, 'w', false, $options);
 echo 'fopen done <br>';
-fwrite($my_file, 'my file text document Number');
+fwrite($my_file, 'my file text1111111111');
 echo 'fwrite done <br>';
 
 fclose($my_file);
