@@ -12,7 +12,7 @@ $defaultBucketPath = "gs://" . $defaultBucket;
 $lmBucket = "localmapdata";
 $lmBucketPath = "gs://" . $lmBucket;
 
-echo 'Hello world!!!!!!! localmap <br>';
+echo '--Hello world!!!!!!! localmap <br>';
 //file_put_contents('gs://'. $defaultBucket. '/hello.txt', 'Hello');
 //echo 'file put <br>';
 
