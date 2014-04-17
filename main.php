@@ -18,7 +18,7 @@ echo 'Hello world!!!!!!! localmap <br>';
 
 
 //$object_url = $lmBucketPathh . '/test.txt';
-$object_url = 'gs://home/localmapdata/test.txt';
+$object_url = 'gs://localmapdata/test1.txt';
 $options = stream_context_create(['gs' => ['acl' => 'public-read']]);
 echo 'stream context create <br>';
 
