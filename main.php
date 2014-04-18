@@ -36,3 +36,4 @@ echo 'fclose done <br>';
 $object_public_url = CloudStorageTools::getPublicUrl($object_url, false);
 echo 'public url = ' . $object_public_url . '<br>';
 //header('Location:' . $object_public_url);
+
