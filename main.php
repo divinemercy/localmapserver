@@ -20,7 +20,8 @@ $mapPath = "http://maps.googleapis.com/maps/api/staticmap?center=yaoundé&zoom=1
 $file_content = file_get_contents("yaounde-roadmap-scale1-png.zip");
 echo "file content get <br>";
 //$object_url = $lmBucketPathh . '/test.txt';
-$object_url = 'gs://localmapdata/map1.png';
+//$object_url = 'gs://localmapdata/map1.png';
+$object_url = 'gs://localmapdata/map.zip';
 $options = stream_context_create(['gs' => ['acl' => 'public-read']]);
 echo 'stream context create <br>';
 
