@@ -12,7 +12,9 @@ function check_conn_timeout() {
 
 $_SESSION['start_time'] = time();
 for ($i = 0; $i < 100; $i++) {
-    echo "val ". $i. "<br>";
+    echo "val " . $i . "<br>";
+    $exe_time = time() - $_SESSION['start_time'];
+    echo "Exe Time = " . $exe_time . '<br><br>';
 }
 //while (1) {
 //    check_conn_timeout();
