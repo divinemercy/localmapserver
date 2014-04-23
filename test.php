@@ -11,14 +11,17 @@ function check_conn_timeout() {
 }
 
 $_SESSION['start_time'] = time();
-while (1) {
-    check_conn_timeout();
-    $status = connection_status();
-//    sleep(1);
-    $exe_time = time() - $_SESSION['start_time'];
-//    echo "Connection status = " . $status . "<br>";
-//    echo "Connection Time out = " . CONNECTION_TIMEOUT . '<br>';
-    echo "Exe Time = " . $exe_time . '<br>';
+for ($i = 0; $i < 100; $i++) {
+    echo "val ". $i. "<br>";
 }
+//while (1) {
+//    check_conn_timeout();
+//    $status = connection_status();
+////    sleep(1);
+//    $exe_time = time() - $_SESSION['start_time'];
+////    echo "Connection status = " . $status . "<br>";
+////    echo "Connection Time out = " . CONNECTION_TIMEOUT . '<br>';
+//    echo "Exe Time = " . $exe_time . '<br>';
+//}
 
 
