@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 echo "test <br>";
 
 function check_conn_timeout() {
@@ -9,12 +9,16 @@ function check_conn_timeout() {
     }
 }
 
+$_SESSION['start_time'] = time();
 while (1) {
     check_conn_timeout();
     $status = connection_status();
-    echo "Connection status = " . $status . "<br>";
-    echo "Connection Time out = " . CONNECTION_TIMEOUT . '<br>';
-    sleep(1);
+//    sleep(1);
+    $exe_time = time() - $_SESSION['start_time'];
+//    echo "Connection status = " . $status . "<br>";
+//    echo "Connection Time out = " . CONNECTION_TIMEOUT . '<br>';
+    echo "Exe Time = " . $exe_time . '<br>';
+    
 }
 
 
