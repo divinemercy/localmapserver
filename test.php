@@ -13,7 +13,8 @@ function check_conn_timeout() {
 //  check_conn_timeout();
 //  sleep(1);
 //}
-
+$status = connection_status();
+echo "Connection status = " .$status.'<br>';
 echo "Connection Time out = " . CONNECTION_TIMEOUT.'<br>';
 
 
