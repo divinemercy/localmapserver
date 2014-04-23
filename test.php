@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 echo "test <br>";
 
@@ -18,7 +19,6 @@ while (1) {
 //    echo "Connection status = " . $status . "<br>";
 //    echo "Connection Time out = " . CONNECTION_TIMEOUT . '<br>';
     echo "Exe Time = " . $exe_time . '<br>';
-    
 }
 
 
