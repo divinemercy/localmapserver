@@ -14,7 +14,8 @@ $_SESSION['start_time'] = time();
 for ($i = 0; $i < 100; $i++) {
     $exe_time = time() - $_SESSION['start_time'];
     echo "Exe Time = " . $exe_time . '<br><br>';
-    echo "val " . $i . "  time=". time()."<br>";
+
+    echo "val " . $i . "  time=" . time() . "<br>   ";
 }
 //while (1) {
 //    check_conn_timeout();
