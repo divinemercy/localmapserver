@@ -1,21 +1,52 @@
 <?php
+session_start();
 
-function getLocalmap(){
+function localMapExist($address) {
+    return false;
+}
+
+function getLocalmap() {
+    $centerLat = $_REQUEST["centerLat"];
+    $centerLng = $_REQUEST["centerLng"];
+    $nortEastLat = $_REQUEST["nortEastLat"];
+    $nortEastLng = $_REQUEST["nortEastLng"];
+    $southWestLat = $_REQUEST["southWestLat"];
+    $southWestLng = $_REQUEST["southWestLng"];
+
+    $address = $centerLat . "," . $centerLng;
+    if (localMapExist($address)) {
+        startDataDownloadingProcess($address);
+    } else {
+        startDataMakingProcess($address);
+    }
+}
+
+function startDataDownloadingProcess($address) {
     return array(
-        success => true
+        success => true,
+        data => array(
+            "address" => $address,
+            "images" => array(
+                "path/to/zip/1.zip",
+                "path/to/zip/1.zip",
+                "path/to/zip/1.zip",
+            ),
+            "places" => array(
+                "path/to/json/place/1.json",
+                "path/to/json/place/2.json",
+            )
+        )
     );
 }
 
-function getLongDiffByZoom($zoom) {
-    //Zoom longitude Diff
+function getLongDiffByZoom($zoom) {    
     $zoomLongDiff = array(
         17 => 0.00687
     );
     return $zoomLongDiff[$zoom];
 }
 
-function getLatDiffByZoom($zoom) {
-    //Zoom longitude Diff
+function getLatDiffByZoom($zoom) {    
     $zoomLatDiff = array(
         17 => 0.00656
     );
@@ -37,6 +68,23 @@ function getStaticMapBaseUrl() {
     return $staticMapUrl;
 }
 
+function check_conn_timeout() {
+  $status = connection_status();
+  if (($status & CONNECTION_TIMEOUT) == CONNECTION_TIMEOUT) {
+    echo 'Got timeout';
+  }
+}
+
+while(1) { 
+  check_conn_timeout();
+  sleep(1);
+}
+
+
+function startDataMakingProcess($address){
+    
+}
+
 function downloadStaticMapImage($arrayParams, $fileName) {
     $result = "";
     foreach ($arrayParams as $key => $value) {
@@ -51,7 +99,6 @@ function downloadAddressImages($addressId, $arrayParams, $sw, $ne) {
     $mapType = $arrayParams["maptype"];
     $zoom = $arrayParams["zoom"];
     $format = $arrayParams["format"];
-
 
     $longDiff = getLongDiffByZoom($zoom);
     $latDiff = getLatDiffByZoom($zoom);

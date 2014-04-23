@@ -6,7 +6,7 @@ $action = $_REQUEST["action"];
 
 $result = null;
 switch ($action) {
-    case "getLocalmap":
+    case "getLocalmap":        
         $result = getLocalmap();
         break;
 
@@ -21,5 +21,5 @@ if (empty($result)) {
 }
 
 $resultStr = json_encode($result);
-echo $_REQUEST['callback']."(".json_encode($result).");";
+echo $_REQUEST['callback'] . "(" . json_encode($result) . ");";
 

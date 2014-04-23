@@ -1,6 +1,6 @@
 <?php
 
-echo "test";
+echo "test <br>";
 
 function check_conn_timeout() {
   $status = connection_status();
@@ -9,9 +9,11 @@ function check_conn_timeout() {
   }
 }
 
-while(1) { 
-  check_conn_timeout();
-  sleep(1);
-}
+//while(1) { 
+//  check_conn_timeout();
+//  sleep(1);
+//}
+
+echo "Connection Time out = " . CONNECTION_TIMEOUT.'<br>';
 
 
