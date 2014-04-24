@@ -34,7 +34,8 @@ function getGoogleStaticMap($params) {
     $context = [
         "http" => [
             "method" => "POST",
-            "Content-type" => "image/png",
+            'header' => 'Authorization: key=' . Config::$apiKey . "\r\n" .
+            'Content-Type: image/png' . "\r\n",
         ]
     ];
     $context = stream_context_create($context);
