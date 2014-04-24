@@ -1,8 +1,8 @@
 <?php
 
 class Config {
-
-    public static $apiKey = "AIzaSyAOdZeoBsvFL-ZfVc37okgUgdDyU4xxAfw";
+    
+    public static $apiKey = "AIzaSyBwWvfmKTali0piBSOwUaaGnT7EdrKWuj0";
     public static $maxExecutionTime = 60;
     public static $googleApiUrl = array(
         "staticmap" => "http://maps.googleapis.com/maps/api/staticmap"
