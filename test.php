@@ -60,7 +60,7 @@ function downloadAddressImages($address, $sw, $ne, $params) {
         while (true) {
             $params["center"] = $centerPtLat . "," . $centerPtLong;
             $fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
-//            $fileContent = getGoogleStaticMap($params);
+            $fileContent = getGoogleStaticMap($params);
             echo $fileName . "<br>";
 //            appendFileInSession($address, $fileName, $fileContent);
             $exeTime = microtime_float() - $time_start;
