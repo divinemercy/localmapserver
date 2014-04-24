@@ -29,7 +29,15 @@ function getGoogleStaticMap($params) {
         $result .="&" . $key . "=" . $value;
     }
     $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
-    return file_get_contents($staticMapUrl);
+//    echo "$staticMapUrl <br>";
+    $context = [
+        'http' => [
+            'method' => 'get',
+        ]
+    ];
+    $context = stream_context_create($context);
+    $result = file_get_contents($staticMapUrl, false, $context);
+    return $result;
 }
 
 function appendFileInSession($address, $fileName, $fileContent) {
