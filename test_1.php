@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo "Session content <br>";
+echo "Session contentttttttttttt <br>";
 
 $address = "yaounde-roadmap-scale1-";
 
