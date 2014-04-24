@@ -7,6 +7,7 @@ include_once './utils/ExecutionTracker.php';
 
 echo "test <br>";
 echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
+//print_r(stream_context_get_default() )."<br>";
 echo "<br>";
 
 function getLongDiffByZoom($zoom) {
@@ -62,18 +63,18 @@ function downloadAddressImages($address, $sw, $ne, $params) {
     $centerPtLong = $sw["long"];
 
     $time_start = microtime_float();
-    while (true) {
+    while (1) {
         echo "Row-" . $rowCount . "----CenterPtLat = " . $centerPtLat . "<br>";
-        while (true) {
+        while (1) {
             $params["center"] = $centerPtLat . "," . $centerPtLong;
             $fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
-            $fileContent = getGoogleStaticMap($params);
             echo $fileName . "<br>";
+            $fileContent = getGoogleStaticMap($params);
 //            appendFileInSession($address, $fileName, $fileContent);
             $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
             check_conn_timeout();
-            if ($exeTime >= 10) {
+            if ($exeTime >= 5) {
                 return;
             }
 
