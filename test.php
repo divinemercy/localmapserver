@@ -29,18 +29,19 @@ function getGoogleStaticMap($params) {
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
     }
-    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
+//    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
+    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
 ////    echo "$staticMapUrl <br>";        
-//    $context = [
-//        "http" => [
-//            "method" => "POST",
-//            'header' => 'Authorization: key=' . Config::$apiKey . "\r\n" .
-//            'Content-Type: image/png' . "\r\n",
-//        ]
-//    ];
-//    $context = stream_context_create($context);
-//    $result = file_get_contents($staticMapUrl, false, $context);
-    $result = file_get_contents("http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg");
+    $context = [
+        "http" => [
+            "method" => "POST",
+            'header' => 'Authorization: key=' . Config::$apiKey . "\r\n" .
+            'Content-Type: image/jpg' . "\r\n",
+        ]
+    ];
+    $context = stream_context_create($context);
+    $result = file_get_contents($staticMapUrl, false, $context);
+    
 
 
 //    $ch = curl_init($staticMapUrl);
@@ -49,7 +50,7 @@ function getGoogleStaticMap($params) {
 //    curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
 //    $result = curl_exec($ch);
 //    curl_close($ch);
-        
+
     return $result;
 }
 
@@ -89,7 +90,7 @@ function downloadAddressImages($address, $sw, $ne, $params) {
             $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
             check_conn_timeout();
-            if ($exeTime >= 5) {
+            if ($exeTime >= 10) {
                 return;
             }
 //            echo "-----------CenterPtLong = $centerPtLong      Col= " . $colCount . "\n";
