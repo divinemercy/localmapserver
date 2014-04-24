@@ -5,7 +5,7 @@ class Config {
     public static $apiKey = "AIzaSyBwWvfmKTali0piBSOwUaaGnT7EdrKWuj0";
     public static $maxExecutionTime = 60;
     public static $googleApiUrl = array(
-        "staticmap" => "http://maps.googleapis.com/maps/api/staticmap"
+        "staticmap" => "https://maps.googleapis.com/maps/api/staticmap"
     );
 
     public static function getGoogleApiKey() {
