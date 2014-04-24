@@ -1,22 +1,153 @@
 <?php
 
 session_start();
+
+include_once './config.php';
+include_once './utils/ExecutionTracker.php';
+
 echo "test <br>";
 
-function check_conn_timeout() {
-    $status = connection_status();
-    if (($status & CONNECTION_TIMEOUT) == CONNECTION_TIMEOUT) {
-        echo 'Got timeout <br>';
+function getLongDiffByZoom($zoom) {
+    $zoomLongDiff = array(
+        17 => 0.00687
+    );
+    return $zoomLongDiff[$zoom];
+}
+
+function getLatDiffByZoom($zoom) {
+    $zoomLatDiff = array(
+        17 => 0.00656
+    );
+    return $zoomLatDiff[$zoom];
+}
+
+function getGoogleStaticMap($params) {
+    $result = "";
+    foreach ($params as $key => $value) {
+        $result .="&" . $key . "=" . $value;
+    }
+    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
+    return file_get_contents($staticMapUrl);
+}
+
+function appendFileInSession($address, $fileName, $fileContent) {
+    if (!isset($_SESSION[$address])) {
+        $_SESSION[$address] = array();
+    }
+    $file = new stdClass();
+    $file->fileName = $fileName;
+    $file->fileContent = $fileContent;
+    $_SESSION[$address][] = $file;
+}
+
+function downloadAddressImages($address, $sw, $ne, $params) {
+    $mapType = $params["maptype"];
+    $zoom = $params["zoom"];
+    $format = $params["format"];
+
+    $longDiff = getLongDiffByZoom($zoom);
+    $latDiff = getLatDiffByZoom($zoom);
+
+    $colCount = 1;
+    $rowCount = 1;
+
+    $centerPtLat = $ne["lat"];
+    $centerPtLong = $sw["long"];
+
+    $time_start = microtime_float();
+    while (true) {
+        echo "Row-" . $rowCount . "----CenterPtLat = " . $centerPtLat . "<br>";
+        while (true) {
+            $params["center"] = $centerPtLat . "," . $centerPtLong;
+            $fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
+            $fileContent = getGoogleStaticMap($params);
+            appendFileInSession($address, $fileName, $fileContent);
+            echo $fileName . "<br>";
+            $exeTime = microtime_float() - $time_start;
+//            if($exeTime >= Config::getMaxExecutionTime()){
+            check_conn_timeout();
+            if ($exeTime >= 50) {
+                return;
+            }
+
+//            echo "-----------CenterPtLong = $centerPtLong      Col= " . $colCount . "\n";
+            if (($centerPtLong + $longDiff) < $ne["long"]) {
+                $centerPtLong += $longDiff;
+                $colCount++;
+            } else {
+                break;
+            }
+        }
+        if (($centerPtLat - $latDiff) > $sw["lat"]) {
+            $centerPtLat -= $latDiff;
+            $rowCount++;
+            $colCount = 1;
+            $centerPtLong = $sw["long"];
+        } else {
+            break;
+        }
     }
 }
 
-$_SESSION['start_time'] = time();
-for ($i = 0; $i < 100; $i++) {
-    $exe_time = time() - $_SESSION['start_time'];
-    echo "Exe Time = " . $exe_time . '<br><br>';
+//$address = "adresse1";
+//
+//$time_start = microtime_float();
+////if (!isset($_SESSION[$address])) {
+////    $_SESSION[$address] = array();
+////}
+//for ($i = 0; $i < 100000; $i++) {
+////    $exe_time = microtime(true) - $time_start;
+//    $exe_time = microtime_float() - $time_start;
+////    $_SESSION[$address][] = "file infos " . $i;
+////    echo "val " . $i . "<br>   ";
+////    echo "Exe Time = " . $exe_time . '<br><br>';
+//}
+//$exe_time = microtime_float() - $time_start;
+//echo "Exe Time = " . $exe_time . '<br><br>';
 
-    echo "val " . $i . "  time=" . time() . "<br>   ";
-}
+
+
+$sw = array(
+    "lat" => 3.699219099999999,
+    "long" => 11.4284419
+);
+$ne = array(
+    "lat" => 3.9613913,
+    "long" => 11.5924644
+);
+
+$params = array(
+    "zoom" => 17,
+    "maptype" => "roadmap",
+    "scale" => 1,
+    "format" => "png",
+    "size" => "640x640",
+);
+$address = "yaounde-roadmap-scale1-";
+downloadAddressImages($address, $sw, $ne, $params);
+
+
+
+
+
+
+
+
+
+//$time_start = microtime_float();
+//
+//// Attend pendant un moment
+//usleep(1000000);
+//
+//$time_end = microtime_float();
+//$time = $time_end - $time_start;
+//
+//echo "Ne rien faire pendant $time secondes\n";
+
+
+
+
+
 //while (1) {
 //    check_conn_timeout();
 //    $status = connection_status();

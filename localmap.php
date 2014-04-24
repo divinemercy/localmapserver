@@ -53,20 +53,12 @@ function getLatDiffByZoom($zoom) {
     return $zoomLatDiff[$zoom];
 }
 
-function getGoogleApiKey() {
-    $apiKey = "AIzaSyAOdZeoBsvFL-ZfVc37okgUgdDyU4xxAfw";
-    return $apiKey;
-}
+
 
 function getMapImageBaseUrl() {
     return "./images";
 }
 
-function getStaticMapBaseUrl() {
-    $apiKey = getGoogleApiKey();
-    $staticMapUrl = "http://maps.googleapis.com/maps/api/staticmap?key=" . $apiKey . "&size=640x640";
-    return $staticMapUrl;
-}
 
 function check_conn_timeout() {
   $status = connection_status();
