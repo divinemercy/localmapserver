@@ -31,10 +31,14 @@ function getGoogleStaticMap($params) {
     }
     $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
 //    echo "$staticMapUrl <br>";        
-    $context = [];
+    $context = [
+        "http" => [
+            "method" => "POST",
+            "Content-type" => "image/png",
+        ]
+    ];
     $context = stream_context_create($context);
     $result = file_get_contents($staticMapUrl, false, $context);
-//    $result = file_get_contents($staticMapUrl);
     return $result;
 }
 
