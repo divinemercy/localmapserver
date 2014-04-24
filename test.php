@@ -30,16 +30,26 @@ function getGoogleStaticMap($params) {
         $result .="&" . $key . "=" . $value;
     }
     $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
-//    echo "$staticMapUrl <br>";        
-    $context = [
-        "http" => [
-            "method" => "POST",
-            'header' => 'Authorization: key=' . Config::$apiKey . "\r\n" .
-            'Content-Type: image/png' . "\r\n",
-        ]
-    ];
-    $context = stream_context_create($context);
-    $result = file_get_contents($staticMapUrl, false, $context);
+////    echo "$staticMapUrl <br>";        
+//    $context = [
+//        "http" => [
+//            "method" => "POST",
+//            'header' => 'Authorization: key=' . Config::$apiKey . "\r\n" .
+//            'Content-Type: image/png' . "\r\n",
+//        ]
+//    ];
+//    $context = stream_context_create($context);
+//    $result = file_get_contents($staticMapUrl, false, $context);
+    $result = file_get_contents("http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg");
+
+
+//    $ch = curl_init($staticMapUrl);
+//    curl_setopt($ch, CURLOPT_HEADER, 0);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//    curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
+//    $result = curl_exec($ch);
+//    curl_close($ch);
+        
     return $result;
 }
 
@@ -79,10 +89,9 @@ function downloadAddressImages($address, $sw, $ne, $params) {
             $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
             check_conn_timeout();
-//            if ($exeTime >= 5) {
-//                return;
-//            }
-
+            if ($exeTime >= 5) {
+                return;
+            }
 //            echo "-----------CenterPtLong = $centerPtLong      Col= " . $colCount . "\n";
             if (($centerPtLong + $longDiff) < $ne["long"]) {
                 $centerPtLong += $longDiff;
