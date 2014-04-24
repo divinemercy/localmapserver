@@ -6,6 +6,8 @@ include_once './config.php';
 include_once './utils/ExecutionTracker.php';
 
 echo "test <br>";
+echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
+echo "<br>";
 
 function getLongDiffByZoom($zoom) {
     $zoomLongDiff = array(
