@@ -79,9 +79,9 @@ function downloadAddressImages($address, $sw, $ne, $params) {
             $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
             check_conn_timeout();
-            if ($exeTime >= 5) {
-                return;
-            }
+//            if ($exeTime >= 5) {
+//                return;
+//            }
 
 //            echo "-----------CenterPtLong = $centerPtLong      Col= " . $colCount . "\n";
             if (($centerPtLong + $longDiff) < $ne["long"]) {
