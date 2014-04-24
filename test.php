@@ -29,14 +29,11 @@ function getGoogleStaticMap($params) {
         $result .="&" . $key . "=" . $value;
     }
     $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
-//    echo "$staticMapUrl <br>";
-    $context = [
-        'http' => [
-            'method' => 'get',
-        ]
-    ];
+//    echo "$staticMapUrl <br>";        
+    $context = [];
     $context = stream_context_create($context);
     $result = file_get_contents($staticMapUrl, false, $context);
+//    $result = file_get_contents($staticMapUrl);
     return $result;
 }
 
@@ -76,7 +73,7 @@ function downloadAddressImages($address, $sw, $ne, $params) {
             $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
             check_conn_timeout();
-            if ($exeTime >= 50) {
+            if ($exeTime >= 10) {
                 return;
             }
 
