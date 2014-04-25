@@ -20,11 +20,12 @@ echo "test client <br>";
 set_include_path("./lib/google-api-php-client-master/src/" . PATH_SEPARATOR . get_include_path());
 require_once 'Google/Client.php';
 require_once 'Google/Service/Books.php';
-
+echo "line4 <br>";
 $client = new Google_Client();
 $client->setApplicationName("localmapserver");
 $apiKey = "AIzaSyBwWvfmKTali0piBSOwUaaGnT7EdrKWuj0";
 $client->setDeveloperKey($apiKey);
+echo "line5 <br>";
 
 $service = new Google_Service_Books($client);
 
