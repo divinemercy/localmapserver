@@ -1,19 +1,19 @@
 <?php
-session_start();
-echo "Session contentttttttttttt <br>";
-
-$address = "yaounde-roadmap-scale1-";
-
-//session_destroy();
-echo "Address = " . $address ."<br>";
-echo "<pre>";
-print_r( $_SESSION[$address]);
-echo "</pre>";
-
-
+//session_start();
+//echo "Session contentttttttttttt <br>";
+//
+//$address = "yaounde-roadmap-scale1-";
+//
+////session_destroy();
+//echo "Address = " . $address ."<br>";
+//echo "<pre>";
+//print_r( $_SESSION[$address]);
+//echo "</pre>";
 
 
 
+
+echo "test client <br>";
 
 
 
