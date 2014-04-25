@@ -1,7 +1,7 @@
 <?php
 
 //set_include_path(get_include_path() . PATH_SEPARATOR . '/path/to/google-api-php-client/src');
-
+set_include_path("./lib/google-api-php-client-master/src/" . PATH_SEPARATOR . get_include_path());
 require_once 'Google/Client.php';
 require_once 'Google/Service/Books.php';
 
