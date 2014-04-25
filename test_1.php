@@ -16,7 +16,7 @@
 echo "test client <br>";
 
 
-echo "line0 <br>";
+echo "line0000000000 <br>";
 //set_include_path(get_include_path() . PATH_SEPARATOR . '/path/to/google-api-php-client/src');
 set_include_path("./lib/google-api-php-client-master/src/" . PATH_SEPARATOR . get_include_path());
 echo "line1 <br>";
