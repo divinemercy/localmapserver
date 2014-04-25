@@ -16,29 +16,24 @@
 echo "test client <br>";
 
 
+//set_include_path(get_include_path() . PATH_SEPARATOR . '/path/to/google-api-php-client/src');
+set_include_path("./lib/google-api-php-client-master/src/" . PATH_SEPARATOR . get_include_path());
+require_once 'Google/Client.php';
+require_once 'Google/Service/Books.php';
 
-//$time_start = microtime_float();
-//
-//// Attend pendant un moment
-//usleep(1000000);
-//
-//$time_end = microtime_float();
-//$time = $time_end - $time_start;
-//
-//echo "Ne rien faire pendant $time secondes\n";
+$client = new Google_Client();
+$client->setApplicationName("localmapserver");
+$apiKey = "AIzaSyBwWvfmKTali0piBSOwUaaGnT7EdrKWuj0";
+$client->setDeveloperKey($apiKey);
 
+$service = new Google_Service_Books($client);
 
+$optParams = array('filter' => 'free-ebooks');
+$results = $service->volumes->listVolumes('Henry David Thoreau', $optParams);
+echo "<h3>Results Of Call:</h3>";
+foreach ($results as $item) {
+  echo $item['volumeInfo']['title'], "<br /> \n";
+}
 
-
-
-//while (1) {
-//    check_conn_timeout();
-//    $status = connection_status();
-////    sleep(1);
-//    $exe_time = time() - $_SESSION['start_time'];
-////    echo "Connection status = " . $status . "<br>";
-////    echo "Connection Time out = " . CONNECTION_TIMEOUT . '<br>';
-//    echo "Exe Time = " . $exe_time . '<br>';
-//}
 
 
