@@ -16,16 +16,19 @@
 echo "test client <br>";
 
 
+echo "line0 <br>";
 //set_include_path(get_include_path() . PATH_SEPARATOR . '/path/to/google-api-php-client/src');
 set_include_path("./lib/google-api-php-client-master/src/" . PATH_SEPARATOR . get_include_path());
+echo "line1 <br>";
 require_once 'Google/Client.php';
+echo "line2 <br>";
 require_once 'Google/Service/Books.php';
-echo "line4 <br>";
+echo "line3 <br>";
 $client = new Google_Client();
 $client->setApplicationName("localmapserver");
 $apiKey = "AIzaSyBwWvfmKTali0piBSOwUaaGnT7EdrKWuj0";
 $client->setDeveloperKey($apiKey);
-echo "line5 <br>";
+echo "line4 <br>";
 
 $service = new Google_Service_Books($client);
 
