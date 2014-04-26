@@ -1,14 +1,15 @@
 <?php
-
-//session_start();
+session_start();
 
 include_once './config.php';
 include_once './utils/ExecutionTracker.php';
+include('./lib/Requests/library/Requests.php');
+Requests::register_autoloader();
 
 echo "test <br>";
-echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
-//print_r(stream_context_get_default() )."<br>";
-echo "<br>";
+//echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
+////print_r(stream_context_get_default() )."<br>";
+//echo "<br>";
 
 function getLongDiffByZoom($zoom) {
     $zoomLongDiff = array(
@@ -29,28 +30,23 @@ function getGoogleStaticMap($params) {
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
     }
-//    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
-    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
-////    echo "$staticMapUrl <br>";        
-    $context = [
-        "http" => [
-            "method" => "POST",
-            'header' => 'Authorization: key=' . Config::$apiKey . "\r\n" .
-            'Content-Type: image/jpg' . "\r\n",
-        ]
-    ];
-    $context = stream_context_create($context);
-    $result = file_get_contents($staticMapUrl, false, $context);
+    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
     
+//    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
+////    echo "$staticMapUrl <br>";        
+//
+//    $context = [
+//        "http" => [
+//            "method" => "POST",
+//            'header' => 'Authorization: key=' . Config::$apiKey . "\r\n" .
+//            'Content-Type: image/jpg' . "\r\n",
+//        ]
+//    ];
+//    $context = stream_context_create($context);
+//    $result = file_get_contents($staticMapUrl, false, $context);
 
-
-//    $ch = curl_init($staticMapUrl);
-//    curl_setopt($ch, CURLOPT_HEADER, 0);
-//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//    curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
-//    $result = curl_exec($ch);
-//    curl_close($ch);
-
+    $request = Requests::get($staticMapUrl, array('Accept' => 'image/png'));
+    $result = $request->body;
     return $result;
 }
 
