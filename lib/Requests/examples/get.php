@@ -6,8 +6,13 @@ include('../library/Requests.php');
 // Next, make sure Requests can load internal classes
 Requests::register_autoloader();
 
-// Now let's make a request!
-$request = Requests::get('http://httpbin.org/get', array('Accept' => 'application/json'));
+//$url = "http://localhost:14083/response.php";
+$url = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
+//$request = Requests::get($url, array('Accept' => 'application/json'));
+$request = Requests::get($url, array('Accept' => 'image/jpg'));
 
 // Check what we received
-var_dump($request);
+echo "<pre>";
+//var_dump($request);
+print_r($request->body);
+echo "</pre>";
