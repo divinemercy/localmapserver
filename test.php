@@ -50,10 +50,10 @@ function getGoogleStaticMap($params) {
 //    $result = file_get_contents($staticMapUrl, false, $context);
 
     $request = Requests::get($staticMapUrl, array('Accept' => 'image/jpg'));
-    echo "<pre>";
-//var_dump($request);
-    print_r($request->body);
-    echo "</pre>";
+//    echo "<pre>";
+////var_dump($request);
+//    print_r($request->body);
+//    echo "</pre>";
     $result = $request->body;
     return $result;
 }
