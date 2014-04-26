@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 include_once './config.php';
@@ -28,7 +29,7 @@ function getLatDiffByZoom($zoom) {
 
 function getGoogleStaticMap($params) {
     Requests::register_autoloader();
-    
+
     $result = "";
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
@@ -48,7 +49,11 @@ function getGoogleStaticMap($params) {
 //    $context = stream_context_create($context);
 //    $result = file_get_contents($staticMapUrl, false, $context);
 
-    $request = Requests::get($staticMapUrl, array('Accept' => 'image/png'));
+    $request = Requests::get($staticMapUrl, array('Accept' => 'image/jpg'));
+    echo "<pre>";
+//var_dump($request);
+    print_r($request->body);
+    echo "</pre>";
     $result = $request->body;
     return $result;
 }
