@@ -5,9 +5,9 @@ session_start();
 include_once './config.php';
 include_once './utils/ExecutionTracker.php';
 include('./lib/Requests/library/Requests.php');
-Requests::register_autoloader();
 
-echo "test <br>";
+
+echo "testttttttttt <br>";
 
 //echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
 ////print_r(stream_context_get_default() )."<br>";
@@ -28,6 +28,8 @@ function getLatDiffByZoom($zoom) {
 }
 
 function getGoogleStaticMap($params) {
+    Requests::register_autoloader();
+    
     $result = "";
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
