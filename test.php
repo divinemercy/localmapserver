@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 include_once './config.php';
@@ -7,6 +8,7 @@ include('./lib/Requests/library/Requests.php');
 Requests::register_autoloader();
 
 echo "test <br>";
+
 //echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
 ////print_r(stream_context_get_default() )."<br>";
 //echo "<br>";
@@ -31,7 +33,7 @@ function getGoogleStaticMap($params) {
         $result .="&" . $key . "=" . $value;
     }
     $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
-    
+
 //    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
 ////    echo "$staticMapUrl <br>";        
 //
@@ -80,15 +82,15 @@ function downloadAddressImages($address, $sw, $ne, $params) {
         while (1) {
             $params["center"] = $centerPtLat . "," . $centerPtLong;
             $fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
-            echo $fileName . "<br>";
             $fileContent = getGoogleStaticMap($params);
+            echo $fileName . "<br>";
 //            appendFileInSession($address, $fileName, $fileContent);
             $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
             check_conn_timeout();
-            if ($exeTime >= 10) {
-                return;
-            }
+//            if ($exeTime >= 10) {
+//                return;
+//            }
 //            echo "-----------CenterPtLong = $centerPtLong      Col= " . $colCount . "\n";
             if (($centerPtLong + $longDiff) < $ne["long"]) {
                 $centerPtLong += $longDiff;
