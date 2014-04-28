@@ -7,7 +7,7 @@ include_once './utils/ExecutionTracker.php';
 include('./lib/Requests/library/Requests.php');
 
 
-echo "testttttttttt <br>";
+echo "test <br>";
 
 //echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
 ////print_r(stream_context_get_default() )."<br>";
@@ -50,10 +50,10 @@ function getGoogleStaticMap($params) {
 //    $result = file_get_contents($staticMapUrl, false, $context);
 
     $request = Requests::get($staticMapUrl, array('Accept' => 'image/jpg'));
-//    echo "<pre>";
-////var_dump($request);
-//    print_r($request->body);
-//    echo "</pre>";
+    echo "<pre>";
+//var_dump($request);
+    print_r($request->body);
+    echo "</pre>";
     $result = $request->body;
     return $result;
 }
