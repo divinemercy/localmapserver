@@ -34,9 +34,9 @@ function getGoogleStaticMap($params) {
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
     }
-    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
+//    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
 
-//    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
+    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
 ////    echo "$staticMapUrl <br>";        
 //
 //    $context = [
