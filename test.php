@@ -92,9 +92,9 @@ function downloadAddressImages($address, $sw, $ne, $params) {
             $fileContent = getGoogleStaticMap($params);
             echo $fileName . "<br>";
 //            appendFileInSession($address, $fileName, $fileContent);
-            $exeTime = microtime_float() - $time_start;
+//            $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
-            check_conn_timeout();
+//            check_conn_timeout();
 //            if ($exeTime >= 10) {
 //                return;
 //            }
