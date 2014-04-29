@@ -29,14 +29,15 @@ function getLatDiffByZoom($zoom) {
 
 function getGoogleStaticMap($params) {
     Requests::register_autoloader();
-
     $result = "";
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
     }
-//    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
+    $staticMapUrl = Config::getGoogleApiUrl("staticmap", false) . $result;
 
-    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
+//    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
+    return $staticMapUrl;
+
 ////    echo "$staticMapUrl <br>";        
 //
 //    $context = [
@@ -48,8 +49,7 @@ function getGoogleStaticMap($params) {
 //    ];
 //    $context = stream_context_create($context);
 //    $result = file_get_contents($staticMapUrl, false, $context);
-    return file_get_contents($staticMapUrl, true);
-
+//    return file_get_contents($staticMapUrl, true);
 //    $request = Requests::get($staticMapUrl, array('Accept' => 'image/jpg'));
 //    echo "<pre>";
 ////var_dump($request);
@@ -90,7 +90,8 @@ function downloadAddressImages($address, $sw, $ne, $params) {
             $params["center"] = $centerPtLat . "," . $centerPtLong;
             $fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
 //            $fileContent = getGoogleStaticMap($params);
-            $url = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
+//            $url = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
+            $url = getGoogleStaticMap($params);
             $fileContent = file_get_contents($url, true);
             echo $fileName . "<br>";
 //            appendFileInSession($address, $fileName, $fileContent);
