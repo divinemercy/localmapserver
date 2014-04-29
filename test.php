@@ -94,7 +94,7 @@ function downloadAddressImages($address, $sw, $ne, $params) {
             $url = getGoogleStaticMap($params);
             $fileContent = file_get_contents($url, true);
             echo $fileName . "<br>";
-//            appendFileInSession($address, $fileName, $fileContent);
+            appendFileInSession($address, $fileName, $fileContent);
 //            $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
 //            check_conn_timeout();
