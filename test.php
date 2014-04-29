@@ -7,7 +7,7 @@ include_once './utils/ExecutionTracker.php';
 //include('./lib/Requests/library/Requests.php');
 
 
-echo "test <br>";
+echo "testtttttttttttt <br>";
 
 //echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
 ////print_r(stream_context_get_default() )."<br>";
@@ -48,7 +48,7 @@ function getGoogleStaticMap($params) {
 //    ];
 //    $context = stream_context_create($context);
 //    $result = file_get_contents($staticMapUrl, false, $context);
-    $result = file_get_contents($staticMapUrl, true);
+    return file_get_contents($staticMapUrl, true);
 
 //    $request = Requests::get($staticMapUrl, array('Accept' => 'image/jpg'));
 //    echo "<pre>";
@@ -56,7 +56,7 @@ function getGoogleStaticMap($params) {
 //    print_r($request->body);
 //    echo "</pre>";
 //    $result = $request->body;
-    return $result;
+//    return $result;
 }
 
 function appendFileInSession($address, $fileName, $fileContent) {
