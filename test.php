@@ -4,7 +4,7 @@ session_start();
 
 include_once './config.php';
 include_once './utils/ExecutionTracker.php';
-include('./lib/Requests/library/Requests.php');
+//include('./lib/Requests/library/Requests.php');
 
 
 echo "test <br>";
@@ -34,9 +34,9 @@ function getGoogleStaticMap($params) {
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
     }
-//    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
+    $staticMapUrl = Config::getGoogleApiUrl("staticmap") . $result;
 
-    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
+//    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
 ////    echo "$staticMapUrl <br>";        
 //
 //    $context = [
@@ -48,13 +48,14 @@ function getGoogleStaticMap($params) {
 //    ];
 //    $context = stream_context_create($context);
 //    $result = file_get_contents($staticMapUrl, false, $context);
+    $result = file_get_contents($staticMapUrl, true);
 
-    $request = Requests::get($staticMapUrl, array('Accept' => 'image/jpg'));
-    echo "<pre>";
-//var_dump($request);
-    print_r($request->body);
-    echo "</pre>";
-    $result = $request->body;
+//    $request = Requests::get($staticMapUrl, array('Accept' => 'image/jpg'));
+//    echo "<pre>";
+////var_dump($request);
+//    print_r($request->body);
+//    echo "</pre>";
+//    $result = $request->body;
     return $result;
 }
 
