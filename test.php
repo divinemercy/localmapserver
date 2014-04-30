@@ -89,9 +89,9 @@ function downloadAddressImages($address, $sw, $ne, $params) {
         echo "Row-" . $rowCount . "----CenterPtLat = " . $centerPtLat . "<br>";
         while (1) {
             $params["center"] = $centerPtLat . "," . $centerPtLong;
-            $file = new stdClass();
+//            $file = new stdClass();
             $fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
-            $file->fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
+//            $file->fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
 //            $fileContent = getGoogleStaticMap($params);
 //            $url = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
             $url = getGoogleStaticMap($params);
