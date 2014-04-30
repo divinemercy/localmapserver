@@ -7,7 +7,7 @@ include_once './utils/ExecutionTracker.php';
 //include('./lib/Requests/library/Requests.php');
 
 
-echo "testtttttttttttt <br>";
+echo "test1 <br>";
 
 //echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
 ////print_r(stream_context_get_default() )."<br>";
@@ -84,6 +84,7 @@ function downloadAddressImages($address, $sw, $ne, $params) {
     $centerPtLong = $sw["long"];
 
     $time_start = microtime_float();
+    
     while (1) {
         echo "Row-" . $rowCount . "----CenterPtLat = " . $centerPtLat . "<br>";
         while (1) {
