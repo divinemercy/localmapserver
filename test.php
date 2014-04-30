@@ -102,12 +102,12 @@ function downloadAddressImages($address, $sw, $ne, $params) {
 //            }
 //
 //            $_SESSION[$address][] = $file;
-            echo $fileName  . "<br>";
+            echo $fileName . "<br>";
 //            echo $file->fileName  . "<br>";
 //            appendFileInSession($address, $fileName, $fileContent);
 //            $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
-//            check_conn_timeout();
+            check_conn_timeout();
 //            if ($exeTime >= 10) {
 //                return;
 //            }
