@@ -95,11 +95,11 @@ function downloadAddressImages($address, $sw, $ne, $params) {
 //            $url = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
             $url = getGoogleStaticMap($params);
             $file->fileContent = file_get_contents($url, true);
-            if (!isset($_SESSION[$address])) {
-                $_SESSION[$address] = array();
-            }
-
-            $_SESSION[$address][] = $file;
+//            if (!isset($_SESSION[$address])) {
+//                $_SESSION[$address] = array();
+//            }
+//
+//            $_SESSION[$address][] = $file;
             echo $file->fileName  . "<br>";
 //            appendFileInSession($address, $fileName, $fileContent);
 //            $exeTime = microtime_float() - $time_start;
