@@ -4,7 +4,7 @@
 
 include_once './config.php';
 include_once './utils/ExecutionTracker.php';
-//include('./lib/Requests/library/Requests.php');
+include('./lib/Requests/library/Requests.php');
 
 
 echo "test1 <br>";
