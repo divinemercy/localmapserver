@@ -7,7 +7,7 @@ include_once './utils/ExecutionTracker.php';
 include('./lib/Requests/library/Requests.php');
 
 
-echo "test11111111---------- <br>";
+echo "test---------- <br>";
 
 //echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
 ////print_r(stream_context_get_default() )."<br>";
@@ -68,8 +68,9 @@ function downloadAddressImages($address, $sw, $ne, $params) {
         echo "Row-" . $rowCount . "----CenterPtLat = " . $centerPtLat . "<br>";
         while (1) {
             $params["center"] = $centerPtLat . "," . $centerPtLong;
+            $url = getGoogleStaticMap($params);
+            $fileContent = file_get_contents($url, true);
             $fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
-
             echo $fileName . "<br>";
 
             if (($centerPtLong + $longDiff) < $ne["long"]) {
