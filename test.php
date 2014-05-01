@@ -4,10 +4,10 @@
 
 include_once './config.php';
 include_once './utils/ExecutionTracker.php';
-include('./lib/Requests/library/Requests.php');
+//include('./lib/Requests/library/Requests.php');
 
 
-echo "test---------- <br>";
+echo "test22---------- <br>";
 
 //echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
 ////print_r(stream_context_get_default() )."<br>";
@@ -32,8 +32,8 @@ function getGoogleStaticMap($params) {
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
     }
-    $staticMapUrl = Config::getGoogleApiUrl("staticmap", false) . $result;
-//    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
+//    $staticMapUrl = Config::getGoogleApiUrl("staticmap", false) . $result;
+    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
     return $staticMapUrl;
 }
 
