@@ -7,7 +7,7 @@ include_once './utils/ExecutionTracker.php';
 include('./lib/Requests/library/Requests.php');
 
 
-echo "test1 <br>";
+echo "test1---------- <br>";
 
 //echo ini_get('allow_url_fopen') ? "Enabled" : "Disabled";
 ////print_r(stream_context_get_default() )."<br>";
@@ -27,7 +27,7 @@ function getLatDiffByZoom($zoom) {
     return $zoomLatDiff[$zoom];
 }
 
-function getGoogleStaticMap($params) {    
+function getGoogleStaticMap($params) {
     $result = "";
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
@@ -63,34 +63,15 @@ function downloadAddressImages($address, $sw, $ne, $params) {
 
 //    $time_start = microtime_float();
 //    $fileArray = array();
-    
+
     while (1) {
         echo "Row-" . $rowCount . "----CenterPtLat = " . $centerPtLat . "<br>";
         while (1) {
             $params["center"] = $centerPtLat . "," . $centerPtLong;
-//            $file = new stdClass();
             $fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
-//            $file->fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
-//            $fileContent = getGoogleStaticMap($params);
-//            $url = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
-//            $url = getGoogleStaticMap($params);
-//            $file->fileContent = file_get_contents($url, true);
-//            $fileContent = file_get_contents($url, true);
-//            if (!isset($_SESSION[$address])) {
-//                $_SESSION[$address] = array();
-//            }
-//
-//            $_SESSION[$address][] = $file;
+
             echo $fileName . "<br>";
-//            echo $file->fileName  . "<br>";
-//            appendFileInSession($address, $fileName, $fileContent);
-//            $exeTime = microtime_float() - $time_start;
-//            if($exeTime >= Config::getMaxExecutionTime()){
-//            check_conn_timeout();
-//            if ($exeTime >= 10) {
-//                return;
-//            }
-//            echo "-----------CenterPtLong = $centerPtLong      Col= " . $colCount . "\n";
+
             if (($centerPtLong + $longDiff) < $ne["long"]) {
                 $centerPtLong += $longDiff;
                 $colCount++;
@@ -108,24 +89,6 @@ function downloadAddressImages($address, $sw, $ne, $params) {
         }
     }
 }
-
-//$address = "adresse1";
-//
-//$time_start = microtime_float();
-////if (!isset($_SESSION[$address])) {
-////    $_SESSION[$address] = array();
-////}
-//for ($i = 0; $i < 100000; $i++) {
-////    $exe_time = microtime(true) - $time_start;
-//    $exe_time = microtime_float() - $time_start;
-////    $_SESSION[$address][] = "file infos " . $i;
-////    echo "val " . $i . "<br>   ";
-////    echo "Exe Time = " . $exe_time . '<br><br>';
-//}
-//$exe_time = microtime_float() - $time_start;
-//echo "Exe Time = " . $exe_time . '<br><br>';
-
-
 
 $sw = array(
     "lat" => 3.699219099999999,
