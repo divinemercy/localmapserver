@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
 
 include_once './config.php';
 include_once './utils/ExecutionTracker.php';
@@ -63,8 +63,8 @@ function downloadAddressImages($address, $sw, $ne, $params) {
     $centerPtLat = $ne["lat"];
     $centerPtLong = $sw["long"];
 
-    $time_start = microtime_float();
-    $fileArray = array();
+//    $time_start = microtime_float();
+//    $fileArray = array();
     
     while (1) {
         echo "Row-" . $rowCount . "----CenterPtLat = " . $centerPtLat . "<br>";
@@ -88,7 +88,7 @@ function downloadAddressImages($address, $sw, $ne, $params) {
 //            appendFileInSession($address, $fileName, $fileContent);
 //            $exeTime = microtime_float() - $time_start;
 //            if($exeTime >= Config::getMaxExecutionTime()){
-            check_conn_timeout();
+//            check_conn_timeout();
 //            if ($exeTime >= 10) {
 //                return;
 //            }
