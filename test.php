@@ -75,7 +75,7 @@ function downloadAddressImages($address, $sw, $ne, $params) {
 //            $file->fileName = $address . '-z-' . $zoom . '-row-' . $rowCount . '-col-' . $colCount . "." . $format;
 //            $fileContent = getGoogleStaticMap($params);
 //            $url = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
-            $url = getGoogleStaticMap($params);
+//            $url = getGoogleStaticMap($params);
 //            $file->fileContent = file_get_contents($url, true);
 //            $fileContent = file_get_contents($url, true);
 //            if (!isset($_SESSION[$address])) {
