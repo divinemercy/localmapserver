@@ -37,6 +37,26 @@ function getGoogleStaticMap($params) {
 
 //    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
     return $staticMapUrl;
+
+////    echo "$staticMapUrl <br>";        
+//
+//    $context = [
+//        "http" => [
+//            "method" => "POST",
+//            'header' => 'Authorization: key=' . Config::$apiKey . "\r\n" .
+//            'Content-Type: image/jpg' . "\r\n",
+//        ]
+//    ];
+//    $context = stream_context_create($context);
+//    $result = file_get_contents($staticMapUrl, false, $context);
+//    return file_get_contents($staticMapUrl, true);
+//    $request = Requests::get($staticMapUrl, array('Accept' => 'image/jpg'));
+//    echo "<pre>";
+////var_dump($request);
+//    print_r($request->body);
+//    echo "</pre>";
+//    $result = $request->body;
+//    return $result;
 }
 
 function appendFileInSession($address, $fileName, $fileContent) {
@@ -65,7 +85,6 @@ function downloadAddressImages($address, $sw, $ne, $params) {
 
     $time_start = microtime_float();
     $fileArray = array();
-    
     while (1) {
         echo "Row-" . $rowCount . "----CenterPtLat = " . $centerPtLat . "<br>";
         while (1) {
@@ -77,7 +96,7 @@ function downloadAddressImages($address, $sw, $ne, $params) {
 //            $url = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
             $url = getGoogleStaticMap($params);
 //            $file->fileContent = file_get_contents($url, true);
-//            $fileContent = file_get_contents($url, true);
+            $fileContent = file_get_contents($url, true);
 //            if (!isset($_SESSION[$address])) {
 //                $_SESSION[$address] = array();
 //            }
