@@ -27,14 +27,12 @@ function getLatDiffByZoom($zoom) {
     return $zoomLatDiff[$zoom];
 }
 
-function getGoogleStaticMap($params) {
-    Requests::register_autoloader();
+function getGoogleStaticMap($params) {    
     $result = "";
     foreach ($params as $key => $value) {
         $result .="&" . $key . "=" . $value;
     }
     $staticMapUrl = Config::getGoogleApiUrl("staticmap", false) . $result;
-
 //    $staticMapUrl = "http://uni2growcameroun.com/app/resources/images/templatemo_image_01.jpg";
     return $staticMapUrl;
 }
